@@ -9,13 +9,13 @@ module.exports = {
         });
 
         const music = createAudioResource('youtubeToAudio.mp3');
+        const player = createAudioPlayer();
         connection.on(VoiceConnectionStatus.Ready, () => {
             console.log('[+] Connected to voice channel.');
+            connection.subscribe(player)
+            player.on('error', (err) => console.log(err))
+            player.play(music)
         })
-        const player = createAudioPlayer();
-        connection.subscribe(player)
-        player.on('error', (err) => console.log(err))
-        player.play(music)
         player.on(AudioPlayerStatus.Playing, () => {
             console.log('[+] Started playing audio.');
         })
