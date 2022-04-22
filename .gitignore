@@ -2,3 +2,4 @@ node_modules
 .env
 youtubeToAudio.mp3
 yarn.lock
+ffmpeg.exe
