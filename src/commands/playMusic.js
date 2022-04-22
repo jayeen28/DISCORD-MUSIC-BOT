@@ -16,7 +16,7 @@ module.exports = {
         const youtubeLinkRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/;
         const youtubeLinkMatch = youtubeLink.match(youtubeLinkRegex);
         if (!youtubeLinkMatch) return interaction.reply({ content: 'Invalid youtube link.', ephemeral: true });
-        interaction.reply({ content: 'Processing audio...', ephemeral: true });
+        interaction.reply({ content: `Playing ${youtubeLinkMatch[0]}...` });
         const res = await videoToMP3(youtubeLinkMatch[0]);
         console.log(res);
         handleVC(interaction);
