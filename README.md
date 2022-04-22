@@ -1,3 +1,12 @@
+## Discord Commands
+> /playmusic/:youtubeVideoLink
+
+This command is used for intilize the player with a music. Also it can be used for changing the music too. 
+
+>controlmusic/:method 
+
+This command is used for controling the player. By this command user can pause ```(/controlmusic/pause)``` the current music or unpause ```(/controlmusic/play)``` the current paused music or can stop ```(/controlmusic/stop)``` the music totally.
+
 ## Run
 > yarn
 
