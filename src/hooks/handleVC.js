@@ -1,4 +1,5 @@
-const { joinVoiceChannel, VoiceConnectionStatus, createAudioPlayer, AudioPlayerStatus, createAudioResource } = require('@discordjs/voice');
+const { joinVoiceChannel, VoiceConnectionStatus, AudioPlayerStatus, createAudioResource } = require('@discordjs/voice');
+const { player } = require('./player');
 
 module.exports = {
     handleVC: (interaction) => {
@@ -9,7 +10,7 @@ module.exports = {
         });
 
         const music = createAudioResource('youtubeToAudio.mp3');
-        const player = createAudioPlayer();
+
         connection.on(VoiceConnectionStatus.Ready, () => {
             console.log('[+] Connected to voice channel.');
             connection.subscribe(player)
