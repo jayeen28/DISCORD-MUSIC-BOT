@@ -1,4 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { videoToMP3 } = require('../hooks/videoToMp3');
+const { handleVC } = require('../hooks/handleVC');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,6 +15,10 @@ module.exports = {
         const youtubeLink = inputedData[0].value;
         const youtubeLinkRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/;
         const youtubeLinkMatch = youtubeLink.match(youtubeLinkRegex);
-        console.log(youtubeLinkMatch[0])
+        if (!youtubeLinkMatch) return interaction.reply({ content: 'Invalid youtube link.', ephemeral: true });
+        interaction.reply({ content: 'Processing audio...', ephemeral: true });
+        const res = await videoToMP3(youtubeLinkMatch[0]);
+        console.log(res);
+        handleVC(interaction);
     }
 }
