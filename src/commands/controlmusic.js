@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const control = require('../hooks/control');
+const playerInstance = require('../hooks/player');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,6 +14,6 @@ module.exports = {
         const inputedData = interaction.options._hoistedOptions[0].value;
         const isValid = ['pause', 'play', 'stop'].includes(inputedData);
         if (!isValid) return interaction.reply({ content: 'Invalid action.', ephemeral: true });
-        control[inputedData](interaction);
+        playerInstance[inputedData](interaction);
     }
 }
