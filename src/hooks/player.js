@@ -1,7 +1,5 @@
 const { createAudioPlayer } = require('@discordjs/voice');
-/**
- * This is the player instance.
- */
+
 class CreatePlayer {
     constructor() {
         this.player = null;
