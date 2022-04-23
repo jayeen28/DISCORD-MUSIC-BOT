@@ -1,8 +1,9 @@
 const { joinVoiceChannel, VoiceConnectionStatus, AudioPlayerStatus, createAudioResource } = require('@discordjs/voice');
-const { player } = require('./player');
+const { createPlayer } = require('./player');
 
 module.exports = {
     handleVC: (interaction) => {
+        const player = createPlayer();
         const connection = joinVoiceChannel({
             channelId: process.env.VC_ID,
             guildId: process.env.GUILD_ID,
