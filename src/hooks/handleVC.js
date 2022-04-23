@@ -17,6 +17,12 @@ module.exports = {
             connection.subscribe(player)
             player.on('error', (err) => console.log(err))
             player.play(music)
+        });
+        connection.on(VoiceConnectionStatus.Disconnected, async () => {
+            console.log('[+] Disconnected from voice channel.');
+            try {
+                connection.destroy();
+            } catch (e) { console.error(e) }
         })
         player.on(AudioPlayerStatus.Playing, () => {
             console.log('[+] Started playing audio.');
