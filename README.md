@@ -22,7 +22,7 @@ If you are using windows then extract the ffmpeg.zip file and place the ffmpeg.e
 
 
 ## Env
-> BOT_TOken
+> BOT_TOKEN
 
 The token of the bot.
 
