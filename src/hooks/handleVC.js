@@ -2,7 +2,7 @@ const { joinVoiceChannel, VoiceConnectionStatus, AudioPlayerStatus, createAudioR
 const playerInstance = require('./player');
 
 module.exports = {
-    handleVC: (interaction) => {
+    handleVC: (interaction, url) => {
         const player = playerInstance.init();
         const connection = joinVoiceChannel({
             channelId: process.env.VC_ID,
@@ -10,7 +10,7 @@ module.exports = {
             adapterCreator: interaction.member.guild.voiceAdapterCreator,
         });
 
-        const music = createAudioResource('youtubeToAudio.mp3');
+        const music = createAudioResource(url);
 
         connection.on(VoiceConnectionStatus.Ready, () => {
             console.log('[+] Connected to voice channel.');
