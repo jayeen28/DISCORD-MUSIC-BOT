@@ -25,6 +25,7 @@ module.exports = {
             } catch (e) { console.error(e) }
         })
         player.on(AudioPlayerStatus.Playing, () => {
+            playerInstance.playing = true;
             console.log('[+] Started playing audio.');
         })
         player.on(AudioPlayerStatus.Idle, () => {
